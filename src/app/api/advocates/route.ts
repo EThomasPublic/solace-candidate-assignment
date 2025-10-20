@@ -1,12 +1,10 @@
-import db from "../../../db";
-import { advocates } from "../../../db/schema";
-import { advocateData } from "../../../db/seed/advocates";
+import { NextRequest } from "next/server";
+import { getAdvocatesBy } from "./query";
 
-export async function GET() {
-  // Uncomment this line to use a database
-  // const data = await db.select().from(advocates);
 
-  const data = advocateData;
-
+export async function GET(request:NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const searchTerm = searchParams.get('searchTerm');
+  const data = await getAdvocatesBy(searchTerm);
   return Response.json({ data });
 }
