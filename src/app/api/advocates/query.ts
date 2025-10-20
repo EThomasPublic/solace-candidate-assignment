@@ -13,7 +13,9 @@ export const getAdvocatesBy = async (searchTerm: string | null) => {
     filters.push(ilike(advocates.city, searchTerm));
     filters.push(ilike(advocates.degree, searchTerm));
     filters.push(arrayContains(advocates.specialties, searchTerm));
-    filters.push(gte(advocates.yearsOfExperience, parseInt(searchTerm)));
+    if(!isNaN(parseInt(searchTerm))) {
+        filters.push(gte(advocates.yearsOfExperience, parseInt(searchTerm)))
+    }
     
     return await db
     .select()
