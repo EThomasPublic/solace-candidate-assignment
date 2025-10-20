@@ -10,3 +10,5 @@
 9. Implement something like RTKQuery if useful (not sure how this would work with NextJS so may not be relevant)
 
 I haven't used NextJS in some time so I'm sure there are a million different optimizations I could do given time to read through the docs. 
+
+NOTE: I did not check in the .env but this code assumes that the database is in use.
